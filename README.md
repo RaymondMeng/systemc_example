@@ -1,1 +1,1 @@
-# full_adder
+# systemc_example

@@ -3,34 +3,44 @@
 #include "full_adder.h"
 #include "driver.h"
 #include "monitor.h"
+#include "bit4_adder.h"
 
 int sc_main(int argc, char* argv[])
 {
 	/*创建信号连接所有模块*/
-	sc_signal<bool> t_a, t_b, t_sum, t_cin, t_cout;
+	//sc_signal<bool> t_a, t_b, t_sum, t_cin, t_cout;
+	sc_signal<bool> t_cout;
+	sc_signal<sc_uint<4> > t_a, t_b, t_sum;
 
 	/*gtkwave查看波形指令*/
 	const char* command = "gtkwave wave.vcd";
 
-	/*全加器模块实例化*/
-	full_adder f1("fulladder_with_halfadder");
-	f1 << t_a << t_b << t_cin << t_sum << t_cout; //位置关联
+	///*全加器模块实例化*/
+	//full_adder f1("fulladder_with_halfadder");
+	//f1 << t_a << t_b << t_cin << t_sum << t_cout; //位置关联
+
+	/*4bit全加器实例化*/
+	bit4_adder b4("4-bit_full_adder");
+	b4.a(t_a);
+	b4.b(t_b);
+	b4.sum(t_sum);
+	b4.cout(t_cout);
 
 	/*信号驱动*/
 	driver dri("signal_drive");
 	dri.d_a(t_a); //名字关联
 	dri.d_b(t_b);
-	dri.d_cin(t_cin);
+	//dri.d_cin(t_cin);
 
 	/*监视器*/
 	monitor mtor("signal_monitor");
-	mtor << t_a << t_b << t_cin << t_sum << t_cout;
+	mtor << t_a << t_b << t_sum << t_cout;
 
 	/*打开vcd记录波形*/
 	sc_trace_file* tf = sc_create_vcd_trace_file("wave");
 	sc_trace(tf, t_a, "a");
 	sc_trace(tf, t_b, "b");
-	sc_trace(tf, t_cin, "cin");
+	//sc_trace(tf, t_cin, "cin");
 	sc_trace(tf, t_sum, "sum");
 	sc_trace(tf, t_cout, "cout");
 

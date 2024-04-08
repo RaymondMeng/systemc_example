@@ -1,7 +1,7 @@
 #include "systemc.h"
 
 SC_MODULE(driver) {
-	sc_out<bool> d_a, d_b, d_cin;
+	sc_out<sc_uint<4> > d_a, d_b;
 
 	void prc_driver();
 

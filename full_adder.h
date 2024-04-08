@@ -17,7 +17,7 @@ SC_MODULE(full_adder) {
 		//名字关联
 		half1->a(a);
 		half1->b(b);
-		half1->sum(s1);
+		half1->sum(sum);
 		half1->carry(c1);
 		//位置关联
 		(*half2)(s1, cin, sum, c2); //严格按照定义的顺序

@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="bit4_adder.h" />
     <ClInclude Include="driver.h" />
     <ClInclude Include="full_adder.h" />
     <ClInclude Include="half_adder.h" />

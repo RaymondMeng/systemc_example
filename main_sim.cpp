@@ -35,7 +35,7 @@ int sc_main(int argc, char* argv[])
 	sc_trace(tf, t_cout, "cout");
 
 	/*开始仿真，运行100ns*/
-	sc_start(100, SC_NS);
+	sc_start(100, SC_US);
 
 	/*关闭vcd文件*/
 	sc_close_vcd_trace_file(tf);

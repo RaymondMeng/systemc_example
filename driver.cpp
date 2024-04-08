@@ -10,7 +10,7 @@ void driver::prc_driver() {
 		d_b = cnt[1];
 		d_cin = cnt[2];
 
-		wait(5, SC_NS); //systemc的时间枚举变量ns, 周期为5ns
+		wait(5, SC_US); //systemc的时间枚举变量ns, 周期为5ns
 		cnt++;
 	}
 }
